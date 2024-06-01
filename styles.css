@@ -1,30 +1,36 @@
-/* General body styles */
+/* General body and layout styles */
 body {
-    font-family: 'Comic Sans MS', cursive, sans-serif; /* Fun, readable font */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #333;
+    background-color: #FDFD96;
     line-height: 1.6;
-    color: #333333;
-    background-color: #FDFD96; /* Light yellow background for a cheerful look */
-    padding: 20px;
     margin: 0;
+    padding: 20px;
 }
 
-/* Header styles */
+.container, .soal-box, section {
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+/* Header and navigation styles */
 header {
-    background-color: #FFB347; /* Bright orange */
+    background-color: #FFB347;
     color: white;
     padding: 20px;
     text-align: center;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin-bottom: 30px; /* Increased margin to separate from nav */
 }
 
-header h1 {
-    margin: 0;
-    font-size: 28px; /* Larger font size for visibility */
-}
-
-/* Navigation menu styles */
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -37,175 +43,79 @@ nav ul li {
     margin-right: 10px;
 }
 
-nav a {
+nav a, .btn, button {
     text-decoration: none;
     color: white;
     font-weight: bold;
-    background-color: #34A2FE; /* Bright blue */
-    padding: 10px 25px; /* Increased padding */
+    background-color: #34A2FE;
+    padding: 10px 25px;
     border-radius: 8px;
     transition: background-color 0.3s;
+    cursor: pointer;
+    display: inline-block;
 }
 
-nav a:hover {
-    background-color: #F778A1; /* Soft pink */
+nav a:hover, .btn:hover, button:hover {
+    background-color: #F778A1;
 }
 
-/* Section styles */
-section {
-    margin: 20px 0;
-    padding: 25px; /* Increased padding */
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+.menu-toggle {
+    display: none;  /* Secara default tombol menu tidak ditampilkan */
 }
 
-section h2 {
-    color: #FF6347; /* Tomato red */
-}
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px; /* Awalnya di sebelah kiri */
+        z-index: 2001; /* Lebih tinggi untuk tetap di atas navigasi */
+        padding: 10px 15px;
+        font-size: 20px;
+        color: white;
+        background-color: #E6A33D;
+        border: none;
+        transition: left 0.3s ease-in-out; /* Tambahkan transisi untuk gerakan halus */
+    }
 
-/* Container styles */
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
+
+    nav ul {
+        display: block; /* Tetapkan sebagai block untuk memastikan selalu bisa diakses */
+        position: fixed;
+        top: 0;
+        left: -50%; /* Awalnya diatur agar berada di luar layar sebesar setengahnya */
+        width: 50%; /* Lebar navigasi setengah dari layar */
+        height: 100%;
+        background-color: #34A2FE;
+        transition: left 0.3s ease-in-out; /* Animasi untuk transisi */
+        z-index: 1000;
+        padding-top: 60px; /* Ruang di atas untuk tombol menu */
+    }
+
+    nav ul li {
+        text-align: center; /* Pusatkan teks */
+        border-bottom: 1px solid #ddd; /* Pemisah antar item */
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 10px 20px;
+        color: white;
+        text-decoration: none;
+        background-color: transparent;
+    }
 }
 
 /* Footer styles */
 footer {
-    background-color: #333333;
+    background-color: #333;
     color: white;
     text-align: center;
     padding: 10px 20px;
     border-radius: 12px;
-    margin-top: 20px;
 }
 
-footer p {
-    margin: 0;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-    header h1, nav a {
-        font-size: 18px; /* Adjusted font size for smaller screens */
-    }
-    nav ul li {
-        display: block;
-        margin-top: 10px;
-    }
-    nav a {
-        padding: 10px; /* Adjusted padding for smaller screens */
-    }
-    .container {
-        width: 95%;
-    }
-    section {
-        padding: 10px;
-        margin: 10px 0;
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        padding: 10px;
-    }
-    header h1 {
-        font-size: 18px; /* Consistent font size on mobile */
-    }
-    nav ul {
-        text-align: center;
-    }
-    nav ul li {
-        display: block;
-        margin: 0;
-    }
-    nav a {
-        display: block;
-        margin: 5px auto;
-        width: 90%;
-        font-size: 16px; /* Slightly reduced font size for mobile */
-    }
-    section {
-        margin: 5px 0;
-    }
-}
-
-.btn {
-    background-color: #4CAF50; /* Green */
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-    transition: background-color 0.3s;
-}
-
-.btn:hover {
-    background-color: #45a049;
-}
-
-.soal-box {
-    background-color: #f2f2f2; /* Light grey background */
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    text-align: center;
-    cursor: pointer; /* Makes it feel clickable */
-}
-
-.soal-box h2 {
-    color: #333;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-}
-
-.container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.question label {
-    display: block;
-    margin: 10px 0;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-footer {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 5px;  /* Disesuaikan lebih ke atas */
-    right: 10px;  /* Mengurangi jarak dari sisi kanan untuk lebih simetris */
-    font-size: 24px;
-    cursor: pointer;
-    color: #333;  /* Opsional: Sesuaikan warna jika perlu */
-}
-
+/* Popup and animation styles */
 .popup {
     position: fixed;
     top: 50%;
@@ -217,47 +127,18 @@ footer {
     border: 2px solid #4CAF50;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    z-index: 1000;
     text-align: center;
     font-size: 24px;
+    z-index: 1000;
     animation: popupAnim 0.5s ease-out;
-    box-sizing: border-box; /* Memastikan padding dan border termasuk dalam width */
 }
 
 @keyframes popupAnim {
-    0% {
-        transform: translate(-50%, -60%) scale(0.5);
-        opacity: 0;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-    }
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
-#result {
-    display: none; /* Sembunyikan sampai form disubmit */
-}
-
-#answer-key h2 {
-    color: #4CAF50; /* Hijau */
-    margin-bottom: 10px;
-}
-
-#answer-key p {
-    margin-left: 20px;
-    font-size: 16px;
-}
-
-.essay-question {
-    margin-bottom: 20px;
-}
-
-.essay-question p {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
+/* Textarea and label styles */
 textarea {
     width: 100%;
     padding: 10px;
@@ -266,62 +147,8 @@ textarea {
     resize: vertical;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block; /* Membuat button full-width jika diperlukan */
-    margin-top: 20px;
+.question label, .essay-question p {
+    display: block;
+    margin: 10px 0;
 }
 
-button:hover {
-    background-color: #45a049;
-}
-
-.video-container {
-    margin: 20px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f8f8f8;
-}
-
-video {
-    width: 100%; /* Sesuaikan ukuran video agar sesuai dengan container */
-    height: auto; /* Maintain aspect ratio */
-}
-
-h2 {
-    color: #333;
-}
-
-p {
-    font-size: 16px;
-    color: #666;
-}
-
-/* Pastikan konten lainnya juga memiliki gaya yang konsisten */
-
-/* Responsiveness */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-
-    .container {
-        padding: 15px;
-    }
-
-    nav ul li {
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    nav ul li a {
-        display: block;
-        width: 100%;
-    }
-}
