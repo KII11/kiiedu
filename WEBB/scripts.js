@@ -56,3 +56,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const countElement = document.createElement('div');
+    countElement.id = 'visitorCount';
+    countElement.style.position = 'fixed';
+    countElement.style.bottom = '10px';
+    countElement.style.right = '10px';
+    countElement.style.backgroundColor = 'white';
+    countElement.style.color = 'black';
+    countElement.style.padding = '5px 10px';
+    countElement.style.borderRadius = '5px';
+    document.body.appendChild(countElement);
+
+    let count = localStorage.getItem('visitCount');
+    count = count ? parseInt(count) + 1 : 1;
+    localStorage.setItem('visitCount', count);
+    countElement.innerText = `Visit Count: ${count}`;
+});
