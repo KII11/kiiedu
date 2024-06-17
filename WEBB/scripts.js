@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+    const pageKey = 'visitCount-' + window.location.pathname; // Membuat key unik berdasarkan pathname
     const countElement = document.createElement('div');
     countElement.id = 'visitorCount';
     countElement.style.position = 'fixed';
@@ -69,8 +70,8 @@ document.addEventListener('DOMContentLoaded', function() {
     countElement.style.borderRadius = '5px';
     document.body.appendChild(countElement);
 
-    let count = localStorage.getItem('visitCount');
+    let count = localStorage.getItem(pageKey);
     count = count ? parseInt(count) + 1 : 1;
-    localStorage.setItem('visitCount', count);
+    localStorage.setItem(pageKey, count);
     countElement.innerText = `Visit Count: ${count}`;
 });
